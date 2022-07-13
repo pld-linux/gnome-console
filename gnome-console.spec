@@ -5,13 +5,12 @@
 Summary:	Minimal terminal for GNOME
 Summary(pl.UTF-8):	Minimalny terminal dla GNOME
 Name:		gnome-console
-Version:	42
-%define	subver	beta
-Release:	0.%{subver}.1
+Version:	42.0
+Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-console/42/%{name}-%{version}.%{subver}.tar.xz
-# Source0-md5:	43b2ab69babd8222a2786a27a0aa1b88
+Source0:	https://download.gnome.org/sources/gnome-console/42/%{name}-%{version}.tar.xz
+# Source0-md5:	44c37fdca2cdbb709650d3b841815cfe
 Patch0:		%{name}-no-update.patch
 URL:		https://gitlab.gnome.org/GNOME/console
 # -std=c17
@@ -66,7 +65,7 @@ Console plugin for Nautilus.
 Wtyczka terminala dla Nautilusa.
 
 %prep
-%setup -q -n %{name}-%{version}.%{subver}
+%setup -q
 %patch0 -p1
 
 %build
