@@ -5,12 +5,12 @@
 Summary:	Minimal terminal for GNOME
 Summary(pl.UTF-8):	Minimalny terminal dla GNOME
 Name:		gnome-console
-Version:	42.0
+Version:	42.2
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/gnome-console/42/%{name}-%{version}.tar.xz
-# Source0-md5:	44c37fdca2cdbb709650d3b841815cfe
+# Source0-md5:	e42929959623fcc728d30980bee31f01
 Patch0:		%{name}-no-update.patch
 URL:		https://gitlab.gnome.org/GNOME/console
 # -std=c17
@@ -27,6 +27,7 @@ BuildRequires:	libstdc++-devel >= 6:7
 BuildRequires:	meson >= 0.59.0
 %{?with_nautilus:BuildRequires:	nautilus-devel >= 3.0}
 BuildRequires:	ninja >= 1.5
+BuildRequires:	pcre2-8-devel >= 10.32
 BuildRequires:	pkgconfig
 BuildRequires:	sassc
 BuildRequires:	tar >= 1:1.22
