@@ -1,27 +1,23 @@
-#
-# Conditonal build:
-%bcond_without	nautilus	# Nautilus plugin
-
+# TODO: switch to gtk4-update-icon-cache
 Summary:	Minimal terminal for GNOME
 Summary(pl.UTF-8):	Minimalny terminal dla GNOME
 Name:		gnome-console
-Version:	42.2
+Version:	43.0
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-console/42/%{name}-%{version}.tar.xz
-# Source0-md5:	e42929959623fcc728d30980bee31f01
+Source0:	https://download.gnome.org/sources/gnome-console/43/%{name}-%{version}.tar.xz
+# Source0-md5:	f8dc9790c0ebd271b0444fc3b35effef
 Patch0:		%{name}-no-update.patch
 URL:		https://gitlab.gnome.org/GNOME/console
 # -std=c17
 BuildRequires:	gcc >= 6:7
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.66
+BuildRequires:	glib2-devel >= 1:2.72
 BuildRequires:	gsettings-desktop-schemas-devel
-BuildRequires:	gtk+3-devel >= 3.24
+BuildRequires:	gtk4-devel >= 4.6
+BuildRequires:	libadwaita-devel >= 1.2
 BuildRequires:	libgtop-devel >= 2.0
-BuildRequires:	libhandy1-devel >= 1.5
-BuildRequires:	libsass-devel
 # -std=gnu++17
 BuildRequires:	libstdc++-devel >= 6:7
 BuildRequires:	meson >= 0.59.0
@@ -29,17 +25,16 @@ BuildRequires:	meson >= 0.59.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pcre2-8-devel >= 10.32
 BuildRequires:	pkgconfig
-BuildRequires:	sassc
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	vte-devel >= 0.67
+BuildRequires:	vte-gtk4-devel >= 0.70
 BuildRequires:	xz
 Requires(post,postun):	gtk-update-icon-cache
-Requires:	glib2 >= 1:2.66
+Requires:	glib2 >= 1:2.72
 Requires:	gsettings-desktop-schemas
-Requires:	gtk+3 >= 3.24
+Requires:	gtk4 >= 4.6
 Requires:	hicolor-icon-theme
-Requires:	libhandy1 >= 1.5
-Requires:	vte >= 0.67
+Requires:	libadwaita >= 1.2
+Requires:	vte-gtk4 >= 0.70
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -52,26 +47,12 @@ Console ma być prostym emulatorem terminala dla przeciętnego
 użytkownika, pozwalającym na wykonywanie prostych zadań w wierszu
 poleceń, "podstawową" aplikacją dla GNOME/Phosh.
 
-%package -n nautilus-extension-console
-Summary:	Console plugin for Nautilus
-Summary(pl.UTF-8):	Wtyczka terminala dla Nautilusa
-Group:		X11/Applications
-Requires:	%{name} = %{version}-%{release}
-Requires:	nautilus >= 3.0
-
-%description -n nautilus-extension-console
-Console plugin for Nautilus.
-
-%description -n nautilus-extension-console -l pl.UTF-8
-Wtyczka terminala dla Nautilusa.
-
 %prep
 %setup -q
 %patch0 -p1
 
 %build
-%meson build \
-	%{!?with_nautilus:-Dnautilus=disabled}
+%meson build
 
 %ninja_build -C build
 
@@ -103,9 +84,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/org.gnome.Console.desktop
 %{_iconsdir}/hicolor/scalable/apps/org.gnome.Console.svg
 %{_iconsdir}/hicolor/symbolic/apps/org.gnome.Console-symbolic.svg
-
-%if %{with nautilus}
-%files -n nautilus-extension-console
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/nautilus/extensions-3.0/libkgx-nautilus.so
-%endif
