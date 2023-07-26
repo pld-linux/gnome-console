@@ -2,12 +2,12 @@
 Summary:	Minimal terminal for GNOME
 Summary(pl.UTF-8):	Minimalny terminal dla GNOME
 Name:		gnome-console
-Version:	43.0
+Version:	44.0
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-console/43/%{name}-%{version}.tar.xz
-# Source0-md5:	f8dc9790c0ebd271b0444fc3b35effef
+Source0:	https://download.gnome.org/sources/gnome-console/44/%{name}-%{version}.tar.xz
+# Source0-md5:	e0133530364fa540621e484dc4d76fdf
 Patch0:		%{name}-no-update.patch
 URL:		https://gitlab.gnome.org/GNOME/console
 # -std=c17
@@ -16,7 +16,7 @@ BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.72
 BuildRequires:	gsettings-desktop-schemas-devel
 BuildRequires:	gtk4-devel >= 4.6
-BuildRequires:	libadwaita-devel >= 1.2
+BuildRequires:	libadwaita-devel >= 1.3
 BuildRequires:	libgtop-devel >= 2.0
 # -std=gnu++17
 BuildRequires:	libstdc++-devel >= 6:7
@@ -33,7 +33,7 @@ Requires:	glib2 >= 1:2.72
 Requires:	gsettings-desktop-schemas
 Requires:	gtk4 >= 4.6
 Requires:	hicolor-icon-theme
-Requires:	libadwaita >= 1.2
+Requires:	libadwaita >= 1.3
 Requires:	vte-gtk4 >= 0.70
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -60,6 +60,9 @@ poleceń, "podstawową" aplikacją dla GNOME/Phosh.
 rm -rf $RPM_BUILD_ROOT
 
 %ninja_install -C build
+
+# not supported by glibc (as of 2.37)
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ie
 
 %find_lang kgx
 
