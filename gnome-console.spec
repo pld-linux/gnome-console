@@ -2,12 +2,12 @@
 Summary:	Minimal terminal for GNOME
 Summary(pl.UTF-8):	Minimalny terminal dla GNOME
 Name:		gnome-console
-Version:	44.0
+Version:	44.4
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/gnome-console/44/%{name}-%{version}.tar.xz
-# Source0-md5:	e0133530364fa540621e484dc4d76fdf
+# Source0-md5:	48f7de2927de09a01ad4bf2ac98a40f3
 Patch0:		%{name}-no-update.patch
 URL:		https://gitlab.gnome.org/GNOME/console
 # -std=c17
