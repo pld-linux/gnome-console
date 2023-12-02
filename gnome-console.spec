@@ -2,26 +2,23 @@
 Summary:	Minimal terminal for GNOME
 Summary(pl.UTF-8):	Minimalny terminal dla GNOME
 Name:		gnome-console
-Version:	44.4
+Version:	45.0
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-console/44/%{name}-%{version}.tar.xz
-# Source0-md5:	48f7de2927de09a01ad4bf2ac98a40f3
+Source0:	https://download.gnome.org/sources/gnome-console/45/%{name}-%{version}.tar.xz
+# Source0-md5:	36f1cd9be85d3b45e34646bb2f489069
 Patch0:		%{name}-no-update.patch
 URL:		https://gitlab.gnome.org/GNOME/console
 # -std=c17
 BuildRequires:	gcc >= 6:7
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.72
+BuildRequires:	glib2-devel >= 1:2.76
 BuildRequires:	gsettings-desktop-schemas-devel
-BuildRequires:	gtk4-devel >= 4.6
-BuildRequires:	libadwaita-devel >= 1.3
+BuildRequires:	gtk4-devel >= 4.12.2
+BuildRequires:	libadwaita-devel >= 1.4
 BuildRequires:	libgtop-devel >= 2.0
-# -std=gnu++17
-BuildRequires:	libstdc++-devel >= 6:7
 BuildRequires:	meson >= 0.59.0
-%{?with_nautilus:BuildRequires:	nautilus-devel >= 3.0}
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pcre2-8-devel >= 10.32
 BuildRequires:	pkgconfig
@@ -29,11 +26,11 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	vte-gtk4-devel >= 0.70
 BuildRequires:	xz
 Requires(post,postun):	gtk-update-icon-cache
-Requires:	glib2 >= 1:2.72
+Requires:	glib2 >= 1:2.76
 Requires:	gsettings-desktop-schemas
-Requires:	gtk4 >= 4.6
+Requires:	gtk4 >= 4.12.2
 Requires:	hicolor-icon-theme
-Requires:	libadwaita >= 1.3
+Requires:	libadwaita >= 1.4
 Requires:	vte-gtk4 >= 0.70
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
