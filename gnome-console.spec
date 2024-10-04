@@ -2,36 +2,38 @@
 Summary:	Minimal terminal for GNOME
 Summary(pl.UTF-8):	Minimalny terminal dla GNOME
 Name:		gnome-console
-Version:	46.0
+Version:	47.1
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-console/46/%{name}-%{version}.tar.xz
-# Source0-md5:	308c82b8e98c4b9857c7de49469ed9d3
+Source0:	https://download.gnome.org/sources/gnome-console/47/%{name}-%{version}.tar.xz
+# Source0-md5:	a7cf1deba7d44070f32b2c429b689716
 Patch0:		%{name}-no-update.patch
 URL:		https://gitlab.gnome.org/GNOME/console
 # -std=c17
 BuildRequires:	gcc >= 6:7
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.76
+BuildRequires:	glib2-devel >= 1:2.80
 BuildRequires:	gsettings-desktop-schemas-devel
-BuildRequires:	gtk4-devel >= 4.12.2
-BuildRequires:	libadwaita-devel >= 1.4
+BuildRequires:	gtk4-devel >= 4.14
+BuildRequires:	libadwaita-devel >= 1.6
 BuildRequires:	libgtop-devel >= 2.0
 BuildRequires:	meson >= 0.59.0
 BuildRequires:	ninja >= 1.5
+BuildRequires:	pango-devel >= 1:1.51.2
 BuildRequires:	pcre2-8-devel >= 10.32
 BuildRequires:	pkgconfig
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	vte-gtk4-devel >= 0.75.1
+BuildRequires:	vte-gtk4-devel >= 0.77.0
 BuildRequires:	xz
 Requires(post,postun):	gtk-update-icon-cache
-Requires:	glib2 >= 1:2.76
+Requires:	glib2 >= 1:2.80
 Requires:	gsettings-desktop-schemas
-Requires:	gtk4 >= 4.12.2
+Requires:	gtk4 >= 4.14
 Requires:	hicolor-icon-theme
-Requires:	libadwaita >= 1.4
-Requires:	vte-gtk4 >= 0.75.1
+Requires:	libadwaita >= 1.6
+Requires:	pango >= 1:1.51.2
+Requires:	vte-gtk4 >= 0.77.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

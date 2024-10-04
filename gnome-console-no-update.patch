@@ -1,9 +1,9 @@
---- gnome-console-43.0/meson.build.orig	2023-05-18 23:01:48.458055544 +0200
-+++ gnome-console-43.0/meson.build	2023-05-19 06:17:30.789763717 +0200
-@@ -134,9 +134,3 @@ schemas_dep = dependency('gsettings-desk
- subdir('data')
+--- gnome-console-47.1/meson.build.orig	2024-10-04 19:36:00.878801110 +0200
++++ gnome-console-47.1/meson.build	2024-10-04 19:36:44.365232190 +0200
+@@ -157,9 +157,3 @@ subdir('data')
  subdir('src')
  subdir('po')
+ subdir('tests')
 -
 -gnome.post_install(
 -     glib_compile_schemas: true,
