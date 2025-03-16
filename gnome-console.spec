@@ -2,14 +2,14 @@
 Summary:	Minimal terminal for GNOME
 Summary(pl.UTF-8):	Minimalny terminal dla GNOME
 Name:		gnome-console
-Version:	47.1
+Version:	47.2
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/gnome-console/47/%{name}-%{version}.tar.xz
-# Source0-md5:	a7cf1deba7d44070f32b2c429b689716
+# Source0-md5:	1d61fe9bb1a17294edeff345fc50563f
 Patch0:		%{name}-no-update.patch
-URL:		https://gitlab.gnome.org/GNOME/console
+URL:		https://apps.gnome.org/Console/
 # -std=c17
 BuildRequires:	gcc >= 6:7
 BuildRequires:	gettext-tools
@@ -23,6 +23,7 @@ BuildRequires:	ninja >= 1.5
 BuildRequires:	pango-devel >= 1:1.51.2
 BuildRequires:	pcre2-8-devel >= 10.32
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	vte-gtk4-devel >= 0.77.0
 BuildRequires:	xz
@@ -51,14 +52,14 @@ poleceń, "podstawową" aplikacją dla GNOME/Phosh.
 %patch -P0 -p1
 
 %build
-%meson build
+%meson
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 # not supported by glibc (as of 2.37)
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ie
