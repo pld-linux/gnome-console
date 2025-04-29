@@ -1,9 +1,9 @@
---- gnome-console-47.1/meson.build.orig	2024-10-04 19:36:00.878801110 +0200
-+++ gnome-console-47.1/meson.build	2024-10-04 19:36:44.365232190 +0200
-@@ -157,9 +157,3 @@ subdir('data')
- subdir('src')
- subdir('po')
- subdir('tests')
+--- gnome-console-48.0.1/meson.build.orig	2025-03-16 01:59:49.000000000 +0100
++++ gnome-console-48.0.1/meson.build	2025-04-29 21:38:27.695461248 +0200
+@@ -164,9 +164,3 @@ subdir('po')
+ if get_option('tests')
+   subdir('tests')
+ endif
 -
 -gnome.post_install(
 -     glib_compile_schemas: true,
